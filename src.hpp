@@ -8,15 +8,7 @@
 #include <stdexcept>
 #include <algorithm>
 
-#if defined(__has_include)
-#  if __has_include(fraction.hpp)
-#    define HAS_OFFICIAL_FRACTION 1
-#    include fraction.hpp
-#  endif
-#endif
-
-#ifndef HAS_OFFICIAL_FRACTION
-// Fallback lightweight fraction implementation for local checks only.
+// Lightweight fraction implementation (exact rational arithmetic)
 class fraction {
 public:
     long long num, den;
@@ -40,7 +32,7 @@ public:
     bool operator==(const fraction& o) const { return num == o.num && den == o.den; }
     bool operator!=(const fraction& o) const { return !(*this == o); }
 };
-#endif
+// end fraction
 
 // Minimal matrix stub (not used by tests but provided to match template expectations)
 class matrix {
